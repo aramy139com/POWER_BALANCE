@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=NetQ6_B Pin=Q4-3
+Removed Pin From Net: NetName=NetQ6_B Pin=Q4-3
+Removed Pin From Net: NetName=NetQ4_C Pin=Q4-3
+Added Component: Designator=U19(LC-SOT-89)
+Added Pin To Net: NetName=CGND Pin=U19-1
+Added Pin To Net: NetName=CARVCC3.3 Pin=U19-2
+Added Pin To Net: NetName=CARVCC3.3 Pin=U19-2
+Added Pin To Net: NetName=CARVCC5 Pin=U19-3
+Added Member To Class: ClassName=stm32_ros_car Member=Component U19 ME6206AXX
+Added Room: Name=ESP_12Ö÷°å
+Added Room: Name=moto2
