@@ -216,7 +216,7 @@ void BalanceCar::controlCarStand(){
 	ledwarn.high();                  //关闭警告灯	
 	pwm=flit_angle*ANGLE_P+raw_imu_msg.angular_velocity.y*ANGLE_D;		//角度环 角度*P+角速度*D
 	pwm+=actualLineSpeed*PLACE_P+displace*PLACE_D;				//速度环 和位移环 速度*P+位移*D
-	serial.print("%d , %d , %d\n",leftencode.getEnValue(),rightencode.getEnValue(),pwm);
+	//serial.print("%d , %d , %d\n",leftencode.getEnValue(),rightencode.getEnValue(),pwm);
 	leftwheel.setPWM(pwm);
 	rightwheel.setPWM(pwm);
 }
