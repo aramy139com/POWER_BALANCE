@@ -1,0 +1,22 @@
+#ifndef _HARDSPI_H_
+#define _HARDSPI_H_
+#include "Gpio.h"
+//硬件spi
+class Hardspi{
+	public:		
+	Hardspi(){		//默认选择SPI1
+		SPIx=SPI1;
+	}
+	Hardspi(SPI_TypeDef* _SPIx){
+		SPIx=_SPIx;
+	}
+	void setSpix(SPI_TypeDef* _SPIx){
+		SPIx=_SPIx;
+	}
+	void initialize();			//初始化各个参数
+	
+	private:
+			SPI_TypeDef* SPIx;
+			
+};
+#endif // _HARDSPI_H_
