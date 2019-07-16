@@ -18,8 +18,8 @@ int main() {
     SystemInit();
     initialise();
     serial.begin(115200);
-    delay(100);
-    balcar.initialize();
+    delay(10);
+    balcar.initialize();		
     while(1) {
         //定时读取 imu信息，用以控制姿态  同时读取码盘信息
         if((millis()-carImuTime)>=(1000/CAR_IMU_RATE)) {
@@ -37,7 +37,9 @@ int main() {
         if((millis()-publishBatTime)>=(1000/BAT_PUBLISH_RATE)) {
             //serial.print("%.2f \n",bat);
             publishBatTime=millis();
-            balcar.getBatPower();
+            if(balcar.getBatPower()<11.5){		//电压过低，告警
+							balcar.beep.invert();
+						}
         }
 
     }

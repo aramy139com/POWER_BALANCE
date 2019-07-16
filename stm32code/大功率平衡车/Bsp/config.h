@@ -32,12 +32,6 @@
 #define K1  0.05			//一阶滤波参数  //加速度取值的权重
 #define K2  0.02			//二阶滤波参数  //加速度取值的权重
 
-
-#define ANGLE_P    70.0 // P constant
-#define ANGLE_D    9.0 // D constant
-#define PLACE_P    -725.5 // P constant
-#define PLACE_D    0.0 // D constant
-
 enum Side{
 	LEFT = 0,
 	RIGHT = 1

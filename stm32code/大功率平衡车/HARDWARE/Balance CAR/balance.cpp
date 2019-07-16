@@ -16,6 +16,8 @@ float PCt_0, PCt_1, E;
 float K_0, K_1, t_0, t_1;
 float Pdot[4] ={0,0,0,0};
 float PP[2][2] = { { 1, 0 },{ 0, 1 } };
+
+float standpid[4]={70.0,9.23,-725.5,0.0};						//站立用的环 前两个：角度环 P,D, 后两个 速度环 P,D
 void BalanceCar::initialize(){
 	//设置mpu6050的偏移量，实测得来的值
 	short offset[6]={-343,-54,-33,0,0,0};	
@@ -29,7 +31,8 @@ void BalanceCar::initialize(){
 	ledred.high();
 	ledgreen.high();
 	ledwarn.high();
-	beep.low();
+	beep.high();								//鸣笛
+	delay(50);
 	
 	//初始化传感器
 	mpu.setAcc_fsr(ACC16G);			//加速度传感器 量程
@@ -65,6 +68,7 @@ void BalanceCar::initialize(){
 	headingRadians=0.0;					//小车的指向  弧度角  0~2pi
 	stat=true;
 	prev_update_time=millis();
+	beep.low();									//关闭蜂鸣器
 }
 
 //获得加速度、陀螺仪传感器的值
@@ -214,8 +218,8 @@ void BalanceCar::controlCarStand(){
 	}
 	//小车为正常状态了  计算需要输出的 pwm值
 	ledwarn.high();                  //关闭警告灯	
-	pwm=flit_angle*ANGLE_P+raw_imu_msg.angular_velocity.y*ANGLE_D;		//角度环 角度*P+角速度*D
-	pwm+=actualLineSpeed*PLACE_P+displace*PLACE_D;				//速度环 和位移环 速度*P+位移*D
+	pwm=flit_angle*standpid[0]+raw_imu_msg.angular_velocity.y*standpid[1];		//角度环 角度*P+角速度*D
+	pwm+=actualLineSpeed*standpid[2]+displace*standpid[3];				//速度环 和位移环 速度*P+位移*D
 	//serial.print("%d , %d , %d\n",leftencode.getEnValue(),rightencode.getEnValue(),pwm);
 	leftwheel.setPWM(pwm);
 	rightwheel.setPWM(pwm);

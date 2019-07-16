@@ -26,9 +26,7 @@ class BalanceCar{
 		float flit_angle;			//滤波后的角度
 		bool stat; //状态   	false  系统停机   true 系统正常 
 		
-		Gpio ledwarn;
-		Gpio beep;		
-		
+		Gpio ledwarn;		
 		//电池
 		Battery batpower;
 		
@@ -56,6 +54,7 @@ class BalanceCar{
 		//灯光
 		Gpio ledred;
 		Gpio ledgreen;
+		Gpio beep;		
 		//编码器
 		Encoder leftencode;
 		Encoder rightencode;
