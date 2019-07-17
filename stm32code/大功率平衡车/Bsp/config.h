@@ -39,7 +39,7 @@ enum Side{
 
 //添加死区控制  
 #define LEFTBLIND 5
-#define RIGHTBLIND 80
+#define RIGHTBLIND 35
 
 //小车倾角过大，则系统停机
 #define FAILANGLE   60			//单位 度  

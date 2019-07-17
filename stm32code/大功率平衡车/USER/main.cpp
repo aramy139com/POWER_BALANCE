@@ -37,9 +37,9 @@ int main() {
         if((millis()-publishBatTime)>=(1000/BAT_PUBLISH_RATE)) {
             //serial.print("%.2f \n",bat);
             publishBatTime=millis();
-            if(balcar.getBatPower()<11.5){		//电压过低，告警
-							balcar.beep.invert();
-						}
+            //if(balcar.getBatPower()<11.5){		//电压过低，告警
+							//balcar.beep.invert();
+						//}
         }
 
     }
